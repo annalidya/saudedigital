@@ -121,6 +121,7 @@ saudedigital/
 │   │   └── safemed.db
 │   ├── src/
 │   │   ├── config/
+│   │   │   ├── config.js          # Variáveis de ambiente e configurações centralizadas
 │   │   │   └── conexaoBanco.js   # Conexão SQLite
 │   │   ├── controladores/
 │   │   │   ├── usuarioControlador.js    # Registro, login, perfil
@@ -310,6 +311,25 @@ CREATE TABLE IF NOT EXISTS registros_login (
 );
 ```
 
+### Índices de Performance
+
+```sql
+CREATE INDEX IF NOT EXISTS idx_usuarios_email ON usuarios(email);
+CREATE INDEX IF NOT EXISTS idx_exames_usuario ON exames(usuario_id);
+CREATE INDEX IF NOT EXISTS idx_receitas_usuario ON receitas(usuario_id);
+CREATE INDEX IF NOT EXISTS idx_consultas_usuario ON consultas(usuario_id);
+CREATE INDEX IF NOT EXISTS idx_medicamentos_usuario ON medicamentos(usuario_id);
+CREATE INDEX IF NOT EXISTS idx_horarios_medicamento ON horarios_medicamento(medicamento_id);
+CREATE INDEX IF NOT EXISTS idx_notificacoes_usuario ON notificacoes(usuario_id);
+CREATE INDEX IF NOT EXISTS idx_sintomas_usuario ON sintomas(usuario_id);
+CREATE INDEX IF NOT EXISTS idx_compromissos_usuario ON compromissos(usuario_id);
+CREATE INDEX IF NOT EXISTS idx_compromissos_data ON compromissos(data);
+CREATE INDEX IF NOT EXISTS idx_lembretes_usuario ON lembretes(usuario_id);
+CREATE INDEX IF NOT EXISTS idx_lembretes_data ON lembretes(data);
+CREATE INDEX IF NOT EXISTS idx_registros_login_usuario ON registros_login(usuario_id);
+CREATE INDEX IF NOT EXISTS idx_registros_login_data ON registros_login(criado_em);
+```
+
 ---
 
 ## 🚀 Endpoints da API
@@ -412,13 +432,39 @@ CREATE TABLE IF NOT EXISTS registros_login (
 
 3. **Configurar variáveis de ambiente:**
    Crie um arquivo `.env` na pasta `api/` com as seguintes variáveis:
-   ```
+   ```env
+   # Servidor
    PORT=3000
+   ORIGEM_PERMITIDA=*
+   BODY_SIZE_LIMIT=10kb
+   FRONTEND_PATH=../../frontend
+
+   # Autenticação
    JWT_SECRET=<sua-chave-secreta-forte>
    JWT_EXPIRA_EM=24h
-   ORIGEM_PERMITIDA=*
+   BCRYPT_SALT_ROUNDS=10
+
+   # Banco de Dados
+   DB_DRIVER=better-sqlite3
+   DB_PATH=./db/safemed.db
+   DB_WAL_MODE=on
+   DB_FOREIGN_KEYS=on
+   DB_SECRET_KEY=<chave-aleatoria-minimo-24-caracteres>
+
+   # Administrador Inicial
+   ADMIN_EMAIL=admin@safemed.com
+   ADMIN_SENHA=<senha-forte-do-admin>
+   ADMIN_NOME=Administrador SAFEMED
+   ADMIN_ESPECIALIDADE=Administrador do Sistema
+
+   # Paginação
+   DEFAULT_PAGE_SIZE=20
+   MAX_PAGE_SIZE=100
+
+   # Notificações
+   NOTIFICATION_LIMIT=50
    ```
-   > **Importante:** Nunca compartilhe sua `JWT_SECRET`. Gere uma chave forte e única para cada ambiente.
+   > **Importante:** Nunca compartilhe sua `JWT_SECRET` e `DB_SECRET_KEY`. Gere chaves fortes e únicas para cada ambiente. Para gerar `DB_SECRET_KEY`: `openssl rand -hex 32`.
 
 4. **Inicializar o banco de dados:**
    ```bash
