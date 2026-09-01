@@ -1,4 +1,4 @@
-const banco = require('../config/conexaoBanco')
+const { banco } = require('../config/conexaoBanco')
 const { sanitizar, validarUsuario, validarLogin } = require('../utilitarios/validadores')
 const { criarHash, verificarSenha, criarToken } = require('../utilitarios/autenticacao')
 const validator = require('validator')

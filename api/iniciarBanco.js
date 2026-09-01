@@ -1,5 +1,5 @@
 const config = require('./src/config/config')
-const banco = require('./src/config/conexaoBanco')
+const { banco } = require('./src/config/conexaoBanco')
 const { criarHash } = require('./src/utilitarios/autenticacao')
 
 banco.exec(`

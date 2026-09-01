@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
-const banco = require('../config/conexaoBanco')
+const { banco } = require('../config/conexaoBanco')
 
 function criarHash(senha) {
   return bcrypt.hashSync(senha, config.BCRYPT_SALT_ROUNDS)

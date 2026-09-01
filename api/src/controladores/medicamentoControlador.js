@@ -1,5 +1,5 @@
 const config = require('../config/config')
-const banco = require('../config/conexaoBanco')
+const { banco } = require('../config/conexaoBanco')
 const { sanitizar, validarMedicamento, validarHorario } = require('../utilitarios/validadores')
 
 // Listar medicamentos

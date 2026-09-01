@@ -1,4 +1,4 @@
-const banco = require('../config/conexaoBanco')
+const { banco } = require('../config/conexaoBanco')
 const { sanitizar } = require('../utilitarios/validadores')
 
 // === COMPROMISSOS ===

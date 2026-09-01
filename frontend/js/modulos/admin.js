@@ -1,4 +1,14 @@
 // Módulo Painel Administrativo
+
+if (!App.badgeTipo) {
+  App.badgeTipo = (tipo) => ({
+    admin: 'bg-purple-100 text-purple-700',
+    medico: 'bg-blue-100 text-blue-700',
+    cuidador: 'bg-teal-100 text-teal-700',
+    paciente: 'bg-green-100 text-green-700'
+  }[tipo] || 'bg-gray-100 text-gray-700')
+}
+
 export default function renderizarAdmin(usuario) {
   return `
     <div class="mb-6">
@@ -179,13 +189,4 @@ export async function inicializar() {
   } catch (erro) {
     App.toast('Erro de conexão com o servidor.', 'erro')
   }
-}
-
-if (!App.badgeTipo) {
-  App.badgeTipo = (tipo) => ({
-    admin: 'bg-purple-100 text-purple-700',
-    medico: 'bg-blue-100 text-blue-700',
-    cuidador: 'bg-teal-100 text-teal-700',
-    paciente: 'bg-green-100 text-green-700'
-  }[tipo] || 'bg-gray-100 text-gray-700')
 }

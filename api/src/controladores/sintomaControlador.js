@@ -1,4 +1,4 @@
-const banco = require('../config/conexaoBanco')
+const { banco } = require('../config/conexaoBanco')
 const { sanitizar, validarSintoma } = require('../utilitarios/validadores')
 
 // Listar sintomas

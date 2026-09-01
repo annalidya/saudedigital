@@ -1,5 +1,5 @@
 const config = require('../config/config')
-const banco = require('../config/conexaoBanco')
+const { banco } = require('../config/conexaoBanco')
 
 const TABELAS_PERMITIDAS = new Set(['usuarios', 'exames', 'receitas', 'consultas', 'medicamentos', 'sintomas', 'notificacoes', 'registros_login'])
 

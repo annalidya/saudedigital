@@ -39,6 +39,8 @@ function sanitizarEntrada(valor) {
   return valor
 }
 
-module.exports = banco
-module.exports.DB_SECRET_KEY = config.DB_SECRET_KEY
-module.exports.sanitizarEntrada = sanitizarEntrada
+module.exports = {
+  banco,
+  DB_SECRET_KEY: config.DB_SECRET_KEY,
+  sanitizarEntrada
+}
