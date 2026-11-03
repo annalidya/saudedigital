@@ -1,0 +1,146 @@
+/* Transição suave para scroll âncora */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animação do spinner de carregamento */
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+.animate-spin {
+  animation: girar 0.6s linear infinite;
+}
+
+/* Transição do toast */
+#toast.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+}
+#toast {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+
+/* Sidebar */
+.sidebar-item.active {
+  background-color: rgba(79, 70, 229, 0.6);
+}
+
+/* Cards */
+.card {
+  transition: all 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal */
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* Tabs */
+.tab-active {
+  color: #4f46e5;
+  border-bottom: 2px solid #4f46e5;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+  }
+  
+  .sidebar {
+    display: none;
+  }
+}
+
+/* Botão de envio desabilitado */
+button:disabled,
+button[disabled] {
+  background-color: #9ca3af !important;
+  cursor: not-allowed !important;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* High contrast mode for accessibility */
+@media (prefers-contrast: high) {
+  .bg-gray-50 {
+    background-color: white;
+  }
+  
+  .bg-white {
+    border: 1px solid black;
+  }
+}
+
+/* Large text mode */
+.text-large {
+  font-size: 1.125rem;
+}
+
+.text-large .text-sm {
+  font-size: 1rem;
+}
+
+.text-large .text-xs {
+  font-size: 0.875rem;
+}
+
+/* Seletor de idioma */
+.seletor-idioma {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 100;
+  display: flex;
+  gap: 0.375rem;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(6px);
+}
+
+.seletor-idioma button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 1.85rem;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.seletor-idioma button:hover {
+  transform: scale(1.06);
+}
+
+.seletor-idioma button.ativo {
+  border-color: #4f46e5;
+}
+
+.seletor-idioma button:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+.seletor-idioma svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  overflow: hidden;
+  display: block;
+}

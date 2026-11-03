@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAFEMED - Prontuário Digital de Saúde</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+
+  <!-- Seletor de idioma -->
+  <div id="seletorIdioma" class="seletor-idioma" role="group" aria-label="Idioma">
+    <button type="button" data-idioma="pt" title="Português" aria-label="Português" aria-pressed="true">
+      <svg viewBox="0 0 720 504" role="img" aria-hidden="true">
+        <rect width="720" height="504" fill="#009c3b"/>
+        <path d="M360 42 678 252 360 462 42 252Z" fill="#ffdf00"/>
+        <circle cx="360" cy="252" r="104" fill="#002776"/>
+        <path d="M266 236c58-28 130-24 188 12" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button type="button" data-idioma="es" title="Español" aria-label="Español" aria-pressed="false">
+      <svg viewBox="0 0 750 500" role="img" aria-hidden="true">
+        <rect width="750" height="500" fill="#aa151b"/>
+        <rect y="125" width="750" height="250" fill="#f1bf00"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Container principal da SPA -->
+  <div id="app">
+    <!-- Conteúdo carregado dinamicamente -->
+    <div class="min-h-screen flex items-center justify-center">
+      <div class="text-center">
+        <h1 class="text-3xl font-bold text-indigo-600">SAFEMED</h1>
+        <p class="text-gray-600 mt-2">Carregando...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts (api.js e mascaras.js como scripts normais, app.js como module) -->
+  <script src="js/i18n-dicionario.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/mascaras.js"></script>
+  <script src="js/i18n.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
